@@ -1,5 +1,8 @@
-Kata::Product = Struct.new(:name, :unit) do
+class Kata::Product
+  attr_reader :name, :unit
 
-  undef :name=, :unit=
-
+  def initialize(name, unit)
+    @name = name
+    @unit = unit
+  end
 end
