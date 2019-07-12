@@ -2,10 +2,10 @@ class Kata::Teller
 
   def initialize(catalog)
     @catalog = catalog
-    @offers = Offers.new
+    @offers = Kata::Offers.new
   end
 
-  class Offers
+  class Kata::Offers
     def initialize
       @offers = {}
     end
