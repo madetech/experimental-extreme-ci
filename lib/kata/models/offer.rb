@@ -36,7 +36,7 @@ class Kata::Offer
   class ThreeForTwo
     def to_discount(quantity, unit_price, quantity_as_int, product)
       discount_amount = quantity * unit_price - (((quantity_as_int / 3) * 2 * unit_price) + quantity_as_int % 3 * unit_price)
-      discount = Kata::Discount.new(product, "3 for 2", discount_amount)
+      Kata::Discount.new(product, "3 for 2", discount_amount)
     end
   end
 end
