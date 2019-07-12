@@ -6,15 +6,18 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-    if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
-      offer = Kata::Offer::ThreeForTwo.new
-    elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
-      offer = Kata::Offer::TwoForAmount.new
-    elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
-      offer = Kata::Offer::FiveForAmount.new
-    elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-      offer = Kata::Offer::TenPercentDiscount.new
-    end
+    offer = case offer_type
+            when Kata::SpecialOfferType::THREE_FOR_TWO
+              Kata::Offer::ThreeForTwo.new
+            when Kata::SpecialOfferType::TWO_FOR_AMOUNT
+              Kata::Offer::TwoForAmount.new
+            when Kata::SpecialOfferType::FIVE_FOR_AMOUNT
+              Kata::Offer::FiveForAmount.new
+            when Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
+              Kata::Offer::TenPercentDiscount.new
+            else
+              raise 'woah'
+            end
 
     @offers.add(Kata::Offer.new(offer, product, argument))
   end
