@@ -39,7 +39,7 @@ class Kata::ShoppingCart
   def handle_offers(receipt, offers, catalog)
     @cart_items
       .products
-      .select { |p| offers.available_for?(p) }
+      .select(&offers.method(:available_for?))
       .each do |product|
       quantity = @cart_items.quantity_of(product)
 
