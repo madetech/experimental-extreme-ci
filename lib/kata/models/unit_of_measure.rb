@@ -1,4 +1,4 @@
 module Kata::UnitOfMeasure
-  EACH = Object.new
-  KILO = Object.new
+  EACH = 'Each'.freeze
+  KILO = 'Kilo'.freeze
 end
