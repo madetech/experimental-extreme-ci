@@ -23,7 +23,7 @@ class Kata::ShoppingCart
     for p in cart_items.keys do
       quantity = cart_items[p]
 
-      return unless offers.key?(p)
+      next unless offers.key?(p)
 
       offer = offers[p]
       unit_price = catalog.unit_price(p)
