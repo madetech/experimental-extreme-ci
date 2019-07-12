@@ -37,7 +37,7 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    for p in @cart_items.keys do
+    @cart_items.keys.each do |p|
       quantity = @cart_items[p]
 
       next unless offers.key?(p)
