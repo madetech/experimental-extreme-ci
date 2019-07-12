@@ -13,7 +13,8 @@ class Kata::ReceiptPrinter
     for discount in receipt.discounts do
       result += print_discount(discount)
     end
-    result.concat("\n")
+
+    result += "\n"
 
     result += print_total(receipt)
 
