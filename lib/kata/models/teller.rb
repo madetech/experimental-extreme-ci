@@ -18,7 +18,7 @@ class Kata::Teller
       @offers[key]
     end
 
-    def key?(key)
+    def available_for?(key)
       @offers.key?(key)
     end
   end
