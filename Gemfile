@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'rake'
-gem 'minitest'
 gem 'guard'
 gem 'guard-rake'
-gem 'simplecov'
+gem 'minitest'
 gem 'mutant-minitest'
+gem 'rake'
+gem 'simplecov'

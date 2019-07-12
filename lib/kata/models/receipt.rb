@@ -1,5 +1,6 @@
-class Kata::Receipt
+# frozen_string_literal: true
 
+class Kata::Receipt
   def initialize
     @items = []
     @discounts = []
@@ -7,10 +8,10 @@ class Kata::Receipt
 
   def total_price
     total = 0.0
-    for item in @items do
+    @items.each do |item|
       total += item.total_price
     end
-    for discount in @discounts do
+    @discounts.each do |discount|
       total -= discount.discount_amount
     end
     total
@@ -33,5 +34,4 @@ class Kata::Receipt
   def discounts
     Array.new @discounts
   end
-
 end

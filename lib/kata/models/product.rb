@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kata::Product
   attr_reader :product_name, :unit_of_measure
 

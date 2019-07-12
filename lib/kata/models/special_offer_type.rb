@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Kata::SpecialOfferType
-  THREE_FOR_TWO = 'ThreeForTwo'.freeze
-  TEN_PERCENT_DISCOUNT = 'TenPercentDiscount'.freeze
-  TWO_FOR_AMOUNT = 'TwoForAmount'.freeze
-  FIVE_FOR_AMOUNT = 'FiveForAmount'.freeze
+  THREE_FOR_TWO = 'ThreeForTwo'
+  TEN_PERCENT_DISCOUNT = 'TenPercentDiscount'
+  TWO_FOR_AMOUNT = 'TwoForAmount'
+  FIVE_FOR_AMOUNT = 'FiveForAmount'
 end

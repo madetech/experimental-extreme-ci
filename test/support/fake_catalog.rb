@@ -1,5 +1,6 @@
-class FakeCatalog < Kata::SupermarketCatalog
+# frozen_string_literal: true
 
+class FakeCatalog < Kata::SupermarketCatalog
   def initialize
     @products = {}
     @prices = {}
@@ -13,5 +14,4 @@ class FakeCatalog < Kata::SupermarketCatalog
   def unit_price(p)
     @prices.fetch(p.product_name)
   end
-
 end

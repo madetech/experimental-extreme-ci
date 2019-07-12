@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kata::ReceiptItem
   attr_reader :product, :quantity, :price, :total_price
 

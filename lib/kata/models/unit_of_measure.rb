@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 module Kata::UnitOfMeasure
-  EACH = 'Each'.freeze
-  KILO = 'Kilo'.freeze
+  EACH = 'Each'
+  KILO = 'Kilo'
 end

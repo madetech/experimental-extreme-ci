@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 require_relative './test_helper'
 
 class SupermarketTest < Minitest::Test
   include Approvals
 
-  cover "Kata*"
+  cover 'Kata*'
 
   def setup
     @catalog = FakeCatalog.new
     @teller = Kata::Teller.new(@catalog)
     @the_cart = Kata::ShoppingCart.new
 
-    @toothbrush = Kata::Product.new("toothbrush", Kata::UnitOfMeasure::EACH)
+    @toothbrush = Kata::Product.new('toothbrush', Kata::UnitOfMeasure::EACH)
     @catalog.add_product(@toothbrush, 0.99)
-    @rice = Kata::Product.new("rice", Kata::UnitOfMeasure::EACH)
+    @rice = Kata::Product.new('rice', Kata::UnitOfMeasure::EACH)
     @catalog.add_product(@rice, 2.99)
-    @apples = Kata::Product.new("apples", Kata::UnitOfMeasure::KILO)
+    @apples = Kata::Product.new('apples', Kata::UnitOfMeasure::KILO)
     @catalog.add_product(@apples, 1.99)
-    @cherry_tomatoes = Kata::Product.new("cherry tomato box", Kata::UnitOfMeasure::EACH)
+    @cherry_tomatoes = Kata::Product.new('cherry tomato box', Kata::UnitOfMeasure::EACH)
     @catalog.add_product(@cherry_tomatoes, 0.69)
   end
 
@@ -106,5 +108,4 @@ class SupermarketTest < Minitest::Test
     receipt = @teller.checks_out_articles_from(@the_cart)
     verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
   end
-
 end

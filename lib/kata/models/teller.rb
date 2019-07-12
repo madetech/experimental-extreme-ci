@@ -1,5 +1,6 @@
-class Kata::Teller
+# frozen_string_literal: true
 
+class Kata::Teller
   def initialize(catalog)
     @catalog = catalog
     @offers = Kata::Offers.new
@@ -25,7 +26,7 @@ class Kata::Teller
   def checks_out_articles_from(the_cart)
     receipt = Kata::Receipt.new
     cart_items = the_cart.items
-    for item in cart_items do
+    cart_items.each do |item|
       product = item.product
       quantity = item.quantity
       unit_price = @catalog.unit_price(product)
@@ -36,5 +37,4 @@ class Kata::Teller
 
     receipt
   end
-
 end

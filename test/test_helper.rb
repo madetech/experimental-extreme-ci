@@ -1,4 +1,6 @@
-if ENV["COVERAGE"] == "yes"
+# frozen_string_literal: true
+
+if ENV['COVERAGE'] == 'yes'
   require 'simplecov'
   SimpleCov.start
 end

@@ -1,5 +1,6 @@
-class Kata::ShoppingCart
+# frozen_string_literal: true
 
+class Kata::ShoppingCart
   def initialize
     @cart_add_events = []
     @cart_items = CartItems.new
@@ -15,11 +16,11 @@ class Kata::ShoppingCart
     end
 
     def add(product, quantity)
-      if @items.key?(product)
-        @items[product] = @items[product] + quantity
-      else
-        @items[product] = quantity
-      end
+      @items[product] = if @items.key?(product)
+                          @items[product] + quantity
+                        else
+                          quantity
+                        end
     end
 
     def products
@@ -53,5 +54,4 @@ class Kata::ShoppingCart
   def products_with_offer(offers)
     @cart_items.products.select(&offers.method(:available_for?))
   end
-
 end
