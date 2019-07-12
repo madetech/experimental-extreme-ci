@@ -6,7 +6,18 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-    @offers.add(Kata::Offer.new(offer_type, product, argument))
+
+    if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
+      offer = Kata::Offer::ThreeForTwo.new
+    elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
+      offer = Kata::Offer::TwoForAmount.new
+    elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
+      offer = Kata::Offer::FiveForAmount.new
+    elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
+      offer = Kata::Offer::TenPercentDiscount.new
+    end
+
+    @offers.add(Kata::Offer.new(offer, product, argument))
   end
 
   def checks_out_articles_from(the_cart)

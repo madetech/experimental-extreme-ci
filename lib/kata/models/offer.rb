@@ -12,17 +12,7 @@ class Kata::Offer
     unit_price = catalog.unit_price(product)
     quantity_as_int = quantity.to_i
 
-    if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
-      offer = ThreeForTwo.new
-    elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
-      offer = TwoForAmount.new
-    elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
-      offer = FiveForAmount.new
-    elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-      offer = TenPercentDiscount.new
-    end
-
-    discount = offer&.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+    discount = @offer_type&.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
 
     discount
   end
