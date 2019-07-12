@@ -7,7 +7,7 @@ class Kata::ReceiptPrinter
   def print_receipt(receipt)
     result = ""
     for item in receipt.items do
-      result.concat(print_item(item));
+      result += print_item(item)
     end
 
     for discount in receipt.discounts do
