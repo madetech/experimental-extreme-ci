@@ -1,5 +1,4 @@
 class Kata::ShoppingCart
-  attr_reader :cart_items
 
   def initialize
     @cart_add_events = []
@@ -38,8 +37,8 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    for p in cart_items.keys do
-      quantity = cart_items[p]
+    for p in @cart_items.keys do
+      quantity = @cart_items[p]
 
       next unless offers.key?(p)
 
