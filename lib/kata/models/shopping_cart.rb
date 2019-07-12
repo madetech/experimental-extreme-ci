@@ -7,7 +7,7 @@ class Kata::ShoppingCart
   end
 
   def items
-    Array.new @items
+    @items.dup
   end
 
   def add_item_quantity(product, quantity)
