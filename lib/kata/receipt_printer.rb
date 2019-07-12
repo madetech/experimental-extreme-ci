@@ -7,19 +7,7 @@ class Kata::ReceiptPrinter
   def print_receipt(receipt)
     result = ""
     for item in receipt.items do
-      price = "%.2f" % item.total_price
-      quantity = self.class.present_quantity(item)
-      name = item.product.product_name
-      unit_price = "%.2f" % item.price
-
-      whitespace_size = @columns - name.size - price.size
-      line = name + self.class.whitespace(whitespace_size) + price + "\n"
-
-      if item.quantity != 1
-        line += "  " + unit_price + " * " + quantity + "\n"
-      end
-
-      result.concat(line);
+      result.concat(print_item(item));
     end
     for discount in receipt.discounts do
       product_presentation = discount.product.product_name
@@ -40,6 +28,21 @@ class Kata::ReceiptPrinter
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
     result.concat(total, whitespace, price_presentation)
     return result.to_s
+  end
+
+  def print_item(item)
+    price = "%.2f" % item.total_price
+    quantity = self.class.present_quantity(item)
+    name = item.product.product_name
+    unit_price = "%.2f" % item.price
+
+    whitespace_size = @columns - name.size - price.size
+    line = name + self.class.whitespace(whitespace_size) + price + "\n"
+
+    if item.quantity != 1
+      line += "  " + unit_price + " * " + quantity + "\n"
+    end
+    line
   end
 
   def self.present_quantity(item)
