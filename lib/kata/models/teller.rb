@@ -14,8 +14,8 @@ class Kata::Teller
       @offers[offer.product] = offer
     end
 
-    def [](key)
-      @offers[key]
+    def for(product)
+      @offers[product]
     end
 
     def available_for?(key)

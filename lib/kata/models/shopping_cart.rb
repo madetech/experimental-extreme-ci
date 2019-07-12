@@ -43,7 +43,7 @@ class Kata::ShoppingCart
       .each do |product|
       quantity = @cart_items.quantity_of(product)
 
-      offer = offers[product]
+      offer = offers.for(product)
       unit_price = catalog.unit_price(product)
       quantity_as_int = quantity.to_i
       discount = nil
