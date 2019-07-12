@@ -20,7 +20,7 @@ class Kata::Offer
     elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
       discount = FiveForAmount.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
     elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-      discount = Kata::Discount.new(product, dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s + "% off", quantity * unit_price * dangerously_overloaded_argument_for_modifying_offers_of_different_types / 100.0)
+      discount = TenPercentDiscount.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
     end
 
     discount
@@ -49,6 +49,12 @@ class Kata::Offer
         discount_total = unit_price * quantity - (dangerously_overloaded_argument_for_modifying_offers_of_different_types * (quantity_as_int / 5) + quantity_as_int % 5 * unit_price)
         Kata::Discount.new(product, "5 for " + dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s, discount_total)
       end
+    end
+  end
+
+  class TenPercentDiscount
+    def to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      Kata::Discount.new(product, dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s + "% off", quantity * unit_price * dangerously_overloaded_argument_for_modifying_offers_of_different_types / 100.0)
     end
   end
 end
