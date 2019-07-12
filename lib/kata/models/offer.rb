@@ -11,17 +11,18 @@ class Kata::Offer
   def calculate_discount(catalog, product, quantity)
     unit_price = catalog.unit_price(product)
     quantity_as_int = quantity.to_i
-    discount = nil
 
     if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int >= 3
-      discount = ThreeForTwo.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      foo = ThreeForTwo.new
     elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
-      discount = TwoForAmount.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      foo = TwoForAmount.new
     elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
-      discount = FiveForAmount.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      foo = FiveForAmount.new
     elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-      discount = TenPercentDiscount.new.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      foo = TenPercentDiscount.new
     end
+
+    discount = foo&.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
 
     discount
   end
