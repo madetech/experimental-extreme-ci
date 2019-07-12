@@ -37,10 +37,7 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    @cart_items
-      .products
-      .select(&offers.method(:available_for?))
-      .each do |product|
+    products_with_offer(offers).each do |product|
       quantity = @cart_items.quantity_of(product)
 
       offer = offers.for(product)
@@ -49,6 +46,12 @@ class Kata::ShoppingCart
 
       receipt.add_discount(discount) if discount
     end
+  end
+
+  private
+
+  def products_with_offer(offers)
+    @cart_items.products.select(&offers.method(:available_for?))
   end
 
 end
