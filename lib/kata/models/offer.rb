@@ -13,16 +13,16 @@ class Kata::Offer
     quantity_as_int = quantity.to_i
 
     if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int >= 3
-      foo = ThreeForTwo.new
+      offer = ThreeForTwo.new
     elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
-      foo = TwoForAmount.new
+      offer = TwoForAmount.new
     elsif offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
-      foo = FiveForAmount.new
+      offer = FiveForAmount.new
     elsif offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-      foo = TenPercentDiscount.new
+      offer = TenPercentDiscount.new
     end
 
-    discount = foo&.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+    discount = offer&.to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
 
     discount
   end
