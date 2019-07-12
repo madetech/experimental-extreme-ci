@@ -2,7 +2,25 @@ class Kata::Teller
 
   def initialize(catalog)
     @catalog = catalog
-    @offers = {}
+    @offers = Offers.new
+  end
+
+  class Offers
+    def initialize
+      @offers = {}
+    end
+
+    def []=(key, value)
+      @offers[key] = value
+    end
+
+    def [](key)
+      @offers[key]
+    end
+
+    def key?(key)
+      @offers.key?(key)
+    end
   end
 
   def add_special_offer(offer_type, product, argument)
