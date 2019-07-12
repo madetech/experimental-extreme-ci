@@ -48,11 +48,9 @@ class Kata::ShoppingCart
       quantity_as_int = quantity.to_i
       discount = nil
 
-      if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
-        if quantity_as_int >= 3
-          discount_amount = quantity * unit_price - (((quantity_as_int / 3) * 2 * unit_price) + quantity_as_int % 3 * unit_price)
-          discount = Kata::Discount.new(product, "3 for 2", discount_amount)
-        end
+      if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int >= 3
+        discount_amount = quantity * unit_price - (((quantity_as_int / 3) * 2 * unit_price) + quantity_as_int % 3 * unit_price)
+        discount = Kata::Discount.new(product, "3 for 2", discount_amount)
       elsif offer.offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
         if quantity_as_int >= 2
           total = offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types * quantity_as_int / 2 + quantity_as_int % 2 * unit_price
