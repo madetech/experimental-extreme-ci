@@ -2,16 +2,16 @@ class Kata::ShoppingCart
   attr_reader :cart_items
 
   def initialize
-    @items = []
+    @cart_add_events = []
     @cart_items = {}
   end
 
   def items
-    @items.dup
+    @cart_add_events.dup
   end
 
   def add_item_quantity(product, quantity)
-    @items << Kata::CartItem.new(product, quantity)
+    @cart_add_events << Kata::CartItem.new(product, quantity)
     if cart_items.key?(product)
       cart_items[product] = cart_items[product] + quantity
     else
