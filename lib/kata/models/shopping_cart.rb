@@ -37,10 +37,8 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    @cart_items.products.each do |product|
+    @cart_items.products.select {|p| offers.key?(p)}.each do |product|
       quantity = @cart_items.quantity_of(product)
-
-      next unless offers.key?(product)
 
       offer = offers[product]
       unit_price = catalog.unit_price(product)
