@@ -5,24 +5,6 @@ class Kata::Teller
     @offers = Kata::Offers.new
   end
 
-  class Kata::Offers
-    def initialize
-      @offers = {}
-    end
-
-    def add(offer)
-      @offers[offer.product] = offer
-    end
-
-    def for(product)
-      @offers[product]
-    end
-
-    def available_for?(key)
-      @offers.key?(key)
-    end
-  end
-
   def add_special_offer(offer_type, product, argument)
     @offers.add(Kata::Offer.new(offer_type, product, argument))
   end
