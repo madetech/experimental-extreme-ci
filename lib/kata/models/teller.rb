@@ -10,8 +10,8 @@ class Kata::Teller
       @offers = {}
     end
 
-    def []=(key, value)
-      @offers[key] = value
+    def add(offer)
+      @offers[offer.product] = offer
     end
 
     def [](key)
@@ -24,7 +24,7 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-    @offers[product] = Kata::Offer.new(offer_type, product, argument)
+    @offers.add(Kata::Offer.new(offer_type, product, argument))
   end
 
   def checks_out_articles_from(the_cart)
