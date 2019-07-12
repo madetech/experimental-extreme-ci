@@ -1,4 +1,5 @@
 class Kata::ShoppingCart
+  attr_reader :product_quantities
 
   def initialize
     @items = []
@@ -12,10 +13,6 @@ class Kata::ShoppingCart
   def add_item(product)
     add_item_quantity(product, 1.0)
     nil
-  end
-
-  def product_quantities
-    @product_quantities
   end
 
   def add_item_quantity(product, quantity)
