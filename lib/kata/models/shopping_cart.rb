@@ -47,6 +47,11 @@ class Kata::ShoppingCart
 
       if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
         number_of_x = quantity_as_int / 3
+
+        if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int > 2
+          discount_amount = quantity * unit_price - ((number_of_x * 2 * unit_price) + quantity_as_int % 3 * unit_price)
+          discount = Kata::Discount.new(product, "3 for 2", discount_amount)
+        end
       elsif offer.offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
         number_of_x = quantity_as_int / 2
         if quantity_as_int >= 2
@@ -58,12 +63,6 @@ class Kata::ShoppingCart
         number_of_x = quantity_as_int / 5
       else
         number_of_x = quantity_as_int
-      end
-
-
-      if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int > 2
-        discount_amount = quantity * unit_price - ((number_of_x * 2 * unit_price) + quantity_as_int % 3 * unit_price)
-        discount = Kata::Discount.new(product, "3 for 2", discount_amount)
       end
 
       if offer.offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
