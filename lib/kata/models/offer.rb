@@ -8,7 +8,7 @@ class Kata::Offer
     @product = product
   end
 
-  def apply(catalog, product, quantity)
+  def calculate_discount(catalog, product, quantity)
     unit_price = catalog.unit_price(product)
     quantity_as_int = quantity.to_i
     discount = nil

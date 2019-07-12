@@ -45,7 +45,7 @@ class Kata::ShoppingCart
 
       offer = offers.for(product)
 
-      discount = offer.apply(catalog, product, quantity)
+      discount = offer.calculate_discount(catalog, product, quantity)
 
       receipt.add_discount(discount) if discount
     end
