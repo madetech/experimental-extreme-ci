@@ -45,7 +45,7 @@ class Kata::Offer
     end
   end
 
-  class PercentDiscount
+  class TenPercentDiscount
     def to_discount(quantity, unit_price, product, _)
       Kata::Discount.new(product, '10.0% off', quantity * unit_price * 0.1)
     end

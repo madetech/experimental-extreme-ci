@@ -15,7 +15,7 @@ class Kata::Teller
             when Kata::SpecialOfferType::FIVE_FOR_AMOUNT
               Kata::Offer::FiveForAmount.new
             when Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-              Kata::Offer::PercentDiscount.new
+              Kata::Offer::TenPercentDiscount.new
             else
               raise 'woah'
             end
