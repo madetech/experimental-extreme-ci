@@ -12,7 +12,7 @@ class Kata::Offer
     unit_price = catalog.unit_price(product)
     quantity_as_int = quantity.to_i
 
-    if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity_as_int >= 3
+    if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
       offer = ThreeForTwo.new
     elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
       offer = TwoForAmount.new
@@ -29,6 +29,7 @@ class Kata::Offer
 
   class ThreeForTwo
     def to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
+      return unless quantity_as_int >= 3
       discount_amount = quantity * unit_price - (((quantity_as_int / 3) * 2 * unit_price) + quantity_as_int % 3 * unit_price)
       Kata::Discount.new(product, "3 for 2", discount_amount)
     end
