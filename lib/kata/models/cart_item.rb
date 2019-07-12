@@ -1,4 +1,4 @@
-class Kata::ProductQuantity
+class Kata::CartItem
 
   attr_reader :product, :quantity
 
