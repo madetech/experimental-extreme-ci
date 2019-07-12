@@ -3,20 +3,38 @@ class Kata::ShoppingCart
 
   def initialize
     @cart_add_events = []
-    @cart_items = {}
+    @cart_items = CartItems.new
   end
 
   def items
     @cart_add_events.dup
   end
 
+  class CartItems
+    def initialize
+      @items = {}
+    end
+
+    def add(product, quantity)
+      if @items.key?(product)
+        @items[product] = @items[product] + quantity
+      else
+        @items[product] = quantity
+      end
+    end
+
+    def keys
+      @items.keys
+    end
+
+    def [](key)
+      @items[key]
+    end
+  end
+
   def add_item_quantity(product, quantity)
     @cart_add_events << Kata::CartItem.new(product, quantity)
-    if cart_items.key?(product)
-      cart_items[product] = cart_items[product] + quantity
-    else
-      cart_items[product] = quantity
-    end
+    @cart_items.add(product, quantity)
   end
 
   def handle_offers(receipt, offers, catalog)
