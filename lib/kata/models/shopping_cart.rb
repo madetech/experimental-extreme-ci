@@ -26,8 +26,8 @@ class Kata::ShoppingCart
       @items.keys
     end
 
-    def [](key)
-      @items[key]
+    def quantity_of(product)
+      @items[product]
     end
   end
 
@@ -38,7 +38,7 @@ class Kata::ShoppingCart
 
   def handle_offers(receipt, offers, catalog)
     @cart_items.products.each do |product|
-      quantity = @cart_items[product]
+      quantity = @cart_items.quantity_of(product)
 
       next unless offers.key?(product)
 
