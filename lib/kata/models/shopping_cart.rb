@@ -44,7 +44,6 @@ class Kata::ShoppingCart
       unit_price = catalog.unit_price(product)
       quantity_as_int = quantity.to_i
       discount = nil
-      number_of_x = nil
 
       if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
         number_of_x = quantity_as_int / 3
