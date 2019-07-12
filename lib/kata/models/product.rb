@@ -1,8 +1,8 @@
 class Kata::Product
-  attr_reader :name, :unit
+  attr_reader :product_name, :unit
 
   def initialize(product_name, unit)
-    @name = product_name
+    @product_name = product_name
     @unit = unit
   end
 end

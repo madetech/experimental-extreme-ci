@@ -9,7 +9,7 @@ class Kata::ReceiptPrinter
     for item in receipt.items do
       price = "%.2f" % item.total_price
       quantity = self.class.present_quantity(item)
-      name = item.product.name
+      name = item.product.product_name
       unit_price = "%.2f" % item.price
 
       whitespace_size = @columns - name.size - price.size
@@ -22,7 +22,7 @@ class Kata::ReceiptPrinter
       result.concat(line);
     end
     for discount in receipt.discounts do
-      product_presentation = discount.product.name
+      product_presentation = discount.product.product_name
       price_presentation = "%.2f" % discount.discount_amount
       description = discount.description
       result.concat(description)
