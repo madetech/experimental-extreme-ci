@@ -37,7 +37,7 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    @cart_items.products.select {|p| offers.key?(p)}.each do |product|
+    @cart_items.products.select { |p| offers.key?(p) }.each do |product|
       quantity = @cart_items.quantity_of(product)
 
       offer = offers[product]
@@ -54,7 +54,7 @@ class Kata::ShoppingCart
           discount_n = unit_price * quantity - total
           discount = Kata::Discount.new(product, "2 for " + offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s, discount_n)
         end
-      elsif offer.offer_type == Kata::SpecialOfferType:: FIVE_FOR_AMOUNT
+      elsif offer.offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
         number_of_x = quantity_as_int / 5
       else
         number_of_x = quantity_as_int
