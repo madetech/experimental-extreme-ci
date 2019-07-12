@@ -18,7 +18,7 @@ class Kata::ReceiptPrinter
 
     result += print_total(receipt)
 
-    return result.to_s
+    return result
   end
 
   def print_total(receipt)
