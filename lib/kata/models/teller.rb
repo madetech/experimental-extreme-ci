@@ -6,7 +6,6 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-
     if offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
       offer = Kata::Offer::ThreeForTwo.new
     elsif offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
