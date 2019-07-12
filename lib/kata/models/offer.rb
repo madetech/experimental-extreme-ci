@@ -45,8 +45,8 @@ class Kata::Offer
   end
 
   class TenPercentDiscount
-    def to_discount(quantity, unit_price, quantity_as_int, product, dangerously_overloaded_argument_for_modifying_offers_of_different_types)
-      Kata::Discount.new(product, dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s + "% off", quantity * unit_price * dangerously_overloaded_argument_for_modifying_offers_of_different_types / 100.0)
+    def to_discount(quantity, unit_price, quantity_as_int, product, percent_off)
+      Kata::Discount.new(product, percent_off.to_s + "% off", quantity * unit_price * percent_off / 100.0)
     end
   end
 end
