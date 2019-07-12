@@ -61,12 +61,10 @@ class Kata::ShoppingCart
         end
       elsif offer.offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT
         number_of_x = quantity_as_int / 5
+      elsif offer.offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
+        discount = Kata::Discount.new(product, offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s + "% off", quantity * unit_price * offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types / 100.0)
       else
         number_of_x = quantity_as_int
-      end
-
-      if offer.offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-        discount = Kata::Discount.new(product, offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types.to_s + "% off", quantity * unit_price * offer.dangerously_overloaded_argument_for_modifying_offers_of_different_types / 100.0)
       end
 
       if offer.offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT && quantity_as_int >= 5
